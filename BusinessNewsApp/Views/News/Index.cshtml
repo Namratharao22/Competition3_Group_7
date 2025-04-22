@@ -1,0 +1,28 @@
+﻿@model List<BusinessNewsApp.Models.NewsArticle>
+
+@{
+    ViewData["Title"] = "Business News";
+}
+
+<h2 class="text-primary mb-4">Top Business Headlines (US)</h2>
+
+@if (Model != null && Model.Any())
+{
+    foreach (var article in Model)
+    {
+        <div class="mb-4">
+            <p><strong>Source:</strong> @article.SourceName</p>
+            <p><strong>Title:</strong> @article.Title</p>
+            <p>
+                <a href="@article.Url" target="_blank" class="btn btn-outline-primary btn-sm">
+                    Read Full Article
+                </a>
+            </p>
+            <hr />
+        </div>
+    }
+}
+else
+{
+    <p class="text-muted">No news articles available at the moment.</p>
+}
